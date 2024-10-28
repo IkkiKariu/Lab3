@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChebotarevLab3", "ChebotarevLab3\ChebotarevLab3.vcxproj", "{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Debug|x64.ActiveCfg = Debug|x64
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Debug|x64.Build.0 = Debug|x64
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Debug|x86.ActiveCfg = Debug|Win32
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Debug|x86.Build.0 = Debug|Win32
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Release|x64.ActiveCfg = Release|x64
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Release|x64.Build.0 = Release|x64
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Release|x86.ActiveCfg = Release|Win32
+		{01305EC1-29BB-47B8-A83C-742EDC6ACAA6}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D056F234-E588-4885-B3E6-B74BA2D79D1C}
+	EndGlobalSection
+EndGlobal
