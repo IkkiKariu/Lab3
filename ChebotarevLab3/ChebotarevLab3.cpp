@@ -379,6 +379,23 @@ void completeFifth()
     cout << buffer2 << endl;
 }
 
+void initInd()
+{
+    const int arrLength = 5;
+    double nums[arrLength] = { 1.1, 4.4, 3.3, 4.4, 1.1 };
+
+    ofstream ofile;
+    ofile.open("individualTaskInput.txt", ios_base::binary | ios_base::trunc);
+
+    for (int i = 0; i < arrLength; i++)
+    {
+        ofile.write((char*)&(nums[i]), sizeof(nums[i]));
+    }
+
+    ofile.close();
+    ofile.clear();
+}
+
 void completeIndividualTask4()
 {
     vector<double> numbers;
@@ -388,21 +405,81 @@ void completeIndividualTask4()
 
     double num;
 
-    while (!ifile.eof())
+    while (ifile.read((char*)&num, sizeof(num)))
     {
-        ifile.read((char*)&num, sizeof(num));
         numbers.push_back(num);
     }
 
     ifile.close();
     ifile.clear();
 
-    auto max = max_element(numbers.begin(), numbers.end());
-    int maxItemIndex = distance(numbers.begin(), max);
-    
-    auto min = min_element(numbers.begin(), numbers.end());
-    int minItemIndex = distance(numbers.begin(), min);
+    double maxElement = numbers.front();
+    double minElement = numbers.front();
 
+    for (double number : numbers)
+    {
+        if (number > maxElement)
+            maxElement = number;
+        if (number < minElement)
+            minElement = number;
+    }
+
+    vector<int> maxElementIndexes;
+    vector<int> minElementIndexes;
+
+    for (int i = 0; i < numbers.size(); i++)
+    {
+        if (numbers[i] == maxElement)
+            maxElementIndexes.push_back(i);
+
+        if (numbers[i] == minElement)
+            minElementIndexes.push_back(i);
+    }
+
+    // replace max elements
+    for (int i : maxElementIndexes)
+    {
+        numbers[i] = minElement;
+    }
+
+    // replace min elements
+    for (int i : minElementIndexes)
+    {
+        numbers[i] = maxElement;
+    }
+
+
+    // rewrite file
+    ofstream ofile;
+    ofile.open("individualTaskInput.txt", ios_base::binary | ios_base::trunc);
+
+    if (!ofile)
+    {
+        cout << "couldn`t open file" << endl;
+        return;
+    }
+
+    for (double number : numbers)
+    {
+        ofile.write((char*)&number, sizeof(number));
+    }
+
+    ofile.close();
+    ofile.clear();
+
+    //read file
+
+    ifile.open("individualTaskInput.txt");
+
+    double n;
+
+    while (ifile.read((char*)&n, sizeof(n)))
+    {
+        cout << n << "\t";
+    }
+
+    ifile.close();
+    ifile.clear();
 }
 
 int main()
@@ -420,34 +497,10 @@ int main()
 
     /*initFifth();
     completeFifth();*/
+
+    initInd();
+    completeIndividualTask4();
 }
 
-void tmp()
-{
-    int numArr[3] = { 1, 2, 3 };
-
-    ofstream f;
-    f.open("text.txt", ios::binary);
-
-    for (int i = 0; i < 3; i++)
-    {
-        f.write((char*)&(numArr[i]), sizeof(numArr[i]));
-        f.seekp(ios::beg);
-    }
-    f.close();
-
-    ifstream ifile;
-    ifile.open("text.txt", ios::binary);
-
-    int n = 0;
-    while (ifile.read((char*)&(n), sizeof(n)))
-    {
-        cout << n << endl;
-    }
-
-    ifile.close();
-
-    return;
-}
 
 
